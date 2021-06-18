@@ -1,0 +1,14 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /kafka/v1
+
+spring:
+  kafka:
+    bootstrap-servers: "localhost:9092"
+    producer:
+      group-id: "myGroup"
+      topic: "myTopic"
+    consumer:
+      group-id: "myGroup"
+      topic: "myTopic"

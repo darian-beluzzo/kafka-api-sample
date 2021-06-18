@@ -1,0 +1,14 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /kafka/v1
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      group-id: myGroup
+      topic: myTopic
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.darianbeluzzo.kafkaapisample.integration.serializers.UserSerializer
+

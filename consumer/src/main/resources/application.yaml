@@ -1,0 +1,15 @@
+server:
+  port: 9091
+  servlet:
+    context-path: /kafka/v1
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: myGroup
+      topic: myTopic
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.darianbeluzzo.kafkaapisample.integration.serializers.UserDeserializer
+
