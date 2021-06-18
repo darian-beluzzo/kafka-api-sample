@@ -11,5 +11,5 @@ spring:
       topic: myTopic
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: com.darianbeluzzo.kafkaapisample.integration.serializers.UserDeserializer
+      value-deserializer: com.darianbeluzzo.kafkaapisample.integration.serializers.CustomDeserializer
 

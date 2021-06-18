@@ -1,10 +1,13 @@
 package com.darianbeluzzo.kafkaapisample.producer.service;
 
 import com.darianbeluzzo.kafkaapisample.integration.dto.UserDto;
+import com.darianbeluzzo.kafkaapisample.integration.serializers.CustomSerializer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+
+import java.nio.charset.StandardCharsets;
 
 @Service
 public class KafkaProducerService {
@@ -20,12 +23,7 @@ public class KafkaProducerService {
 
     public void send(final UserDto user){
         ProducerRecord<String, UserDto> message = new ProducerRecord<>(producerTopic, user);
+        message.headers().add(CustomSerializer.SERIALIZER_CLASS, UserDto.class.getName().getBytes(StandardCharsets.UTF_8));
         this.kafkaTemplate.send(message);
     }
-
-    public void sendString(final String user){
-//        ProducerRecord<String, String> message = new ProducerRecord<>(producerTopic, user);
-//        this.kafkaTemplate.send(message);
-    }
-
 }

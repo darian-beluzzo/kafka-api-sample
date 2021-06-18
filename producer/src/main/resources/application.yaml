@@ -10,5 +10,5 @@ spring:
       group-id: myGroup
       topic: myTopic
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: com.darianbeluzzo.kafkaapisample.integration.serializers.UserSerializer
+      value-serializer: com.darianbeluzzo.kafkaapisample.integration.serializers.CustomSerializer
 

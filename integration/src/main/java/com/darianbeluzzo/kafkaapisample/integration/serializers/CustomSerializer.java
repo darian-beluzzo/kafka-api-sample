@@ -1,17 +1,18 @@
 package com.darianbeluzzo.kafkaapisample.integration.serializers;
 
-import com.darianbeluzzo.kafkaapisample.integration.dto.UserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Serializer;
 
-public class UserSerializer implements Serializer<UserDto> {
+public class CustomSerializer implements Serializer<Object> {
+
+    public static final String SERIALIZER_CLASS = "serializer-class";
 
     @Override
-    public byte[] serialize(String arg0, UserDto arg1) {
+    public byte[] serialize(String topic, Object data) {
         byte[] retVal = null;
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            retVal = objectMapper.writeValueAsString(arg1).getBytes();
+            retVal = objectMapper.writeValueAsString(data).getBytes();
         } catch (Exception e) {
             e.printStackTrace();
         }
